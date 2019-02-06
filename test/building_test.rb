@@ -20,6 +20,7 @@ class BuildingTest < Minitest::Test
                           bedrooms: 2
                           })
     @spencer = Renter.new("Spencer")
+    @jessie = Renter.new("Jessie")
   end
 
   def test_building_exists
@@ -50,6 +51,15 @@ class BuildingTest < Minitest::Test
     @building.add_unit(@b2)
 
     assert_equal @spencer, @building.renter_with_highest_rent
+  end
+
+  def test_highest_rent_with_multiple_renters
+    @b2.add_renter(@spencer)
+    @building.add_unit(@a1)
+    @building.add_unit(@b2)
+    @a1.add_renter(@jessie)
+
+    assert_equal @jessie, @building.renter_with_highest_rent
   end
 
 end
