@@ -11,6 +11,7 @@ class ApartmentTest < Minitest::Test
                           bathrooms: 1,
                           bedrooms: 1
                         })
+    @jessie = Renter.new("Jessie")
   end
 
   def test_apartment_exists
@@ -23,6 +24,12 @@ class ApartmentTest < Minitest::Test
     assert_equal 1, @a1.bathrooms
     assert_equal 1, @a1.bedrooms
     assert_equal nil, @a1.renter
+  end
+
+  def test_add_renter
+    @a1.add_renter(@jessie)
+
+    assert_equal @jessie, @a1.renter
   end
 
 end
