@@ -16,4 +16,18 @@ class Building
     return (sum / total)
   end
 
+  def renter_with_highest_rent
+    # Assumes rents > 0
+    highest_rent = 0
+    # Default return text if all renters are nil
+    highest_renter = "No renters in building."
+    @units.each { |unit|
+      if !unit.renter.nil? && unit.monthly_rent > highest_rent
+        highest_rent = unit.monthly_rent
+        highest_renter = unit.renter
+      end
+     }
+    highest_renter
+  end
+
 end
