@@ -17,4 +17,12 @@ class ApartmentTest < Minitest::Test
     assert_instance_of Apartment, @a1
   end
 
+  def test_initialized_attributes
+    assert_equal "A1", @a1.number
+    assert_equal 1200, @a1.monthly_rent
+    assert_equal 1, @a1.bathrooms
+    assert_equal 1, @a1.bedrooms
+    assert_equal nil, @a1.renter
+  end
+
 end
