@@ -71,4 +71,16 @@ class BuildingTest < Minitest::Test
     assert_equal expected, @building.annual_breakdown
   end
 
+  def test_annual_breakdown_with_two_renters
+    @b2.add_renter(@spencer)
+    @building.add_unit(@a1)
+    @building.add_unit(@b2)
+    @a1.add_renter(@jessie)
+    expected = { "Jessie" => 14400,
+                 "Spencer" => 11988
+                }
+
+    assert_equal expected, @building.annual_breakdown
+  end
+
 end
