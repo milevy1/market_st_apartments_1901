@@ -9,4 +9,11 @@ class Building
     @units << apartment
   end
 
+  def average_rent
+    total = @units.length
+    sum = @units.sum(0.0) { |unit| unit.monthly_rent }
+
+    return (sum / total)
+  end
+
 end
